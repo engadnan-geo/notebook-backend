@@ -2,11 +2,11 @@
   "name": "notebackend",
   "version": "1.0.0",
   "description": "",
-  "type": "module",
   "main": "server.js",
   "scripts": {
-     "start": "node server.js",
-  "dev": "nodemon server.js"
+    "dev": "ts-node-dev src/server.ts",
+    "start": "node dist/server.js",
+    "build": "tsc"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +15,15 @@
     "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "mongoose": "^8.19.2",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "ts-node-dev": "^2.0.0",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.4",
+    "@types/mongoose": "^5.11.96",
+    "@types/node": "^24.9.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   }
 }
