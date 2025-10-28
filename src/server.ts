@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import notecreate from "./routes/note";
+import authRoutes from "./routes/authRoutes";
 
 dotenv.config()
 
@@ -13,6 +14,7 @@ app.use(express.json());
 
 //register routes
 app.use("/",notecreate)
+app.use("/auth", authRoutes);
 
 app.get("/", (_req:Request, res:Response) => {
   res.send("API is running...");
