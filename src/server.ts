@@ -3,18 +3,23 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import notecreate from "./routes/note";
 import authRoutes from "./routes/authRoutes";
-
+import profile from "./routes/upload";
+import {limiter} from "./middleware/ratelimiter"
+import helmet from "helmet";
 dotenv.config()
 
 
 const app=express();
+app.use(limiter);
 app.use(express.json());
-
+// 🛡️ Security middlewares
+app.use(helmet()); // ← Helmet
 
 
 //register routes
 app.use("/",notecreate)
 app.use("/auth", authRoutes);
+app.use("/",profile)
 
 app.get("/", (_req:Request, res:Response) => {
   res.send("API is running...");
