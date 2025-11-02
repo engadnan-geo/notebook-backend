@@ -6,6 +6,8 @@ import authRoutes from "./routes/authRoutes";
 import profile from "./routes/upload";
 import {limiter} from "./middleware/ratelimiter"
 import helmet from "helmet";
+import swaggerUi from 'swagger-ui-express';
+import { swaggerSpec } from "./utils/swagger";
 dotenv.config()
 
 
@@ -15,11 +17,12 @@ app.use(express.json());
 // 🛡️ Security middlewares
 app.use(helmet()); // ← Helmet
 
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 //register routes
-app.use("/",notecreate)
-app.use("/auth", authRoutes);
-app.use("/",profile)
+app.use("/api",notecreate)
+app.use("/apiauth", authRoutes);
+app.use("/api",profile)
 
 app.get("/", (_req:Request, res:Response) => {
   res.send("API is running...");
