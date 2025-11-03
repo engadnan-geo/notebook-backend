@@ -4,6 +4,7 @@ A secure, scalable **Note Management API** built with **TypeScript**, **Express*
 It supports **JWT authentication**, **note CRUD operations**, **Cloudinary uploads**, **rate limiting**, **Swagger docs**, and **secure middlewares**.
 
 ---
+https://notebook-backend-d41a.onrender.com/docs/
 
 ## 🚀 Features
 
