@@ -20,41 +20,38 @@ It supports **JWT authentication**, **note CRUD operations**, **Cloudinary uploa
 
 ---
 
-## 🏗️ Folder Structure
-
-
 src/
-├── controllers/ # Business logic
-│ ├── auth.ts # Handles register/login
-│ ├── note.ts # CRUD for notes
-│ └── upload.ts # Upload to Cloudinary
+├── controllers/           # Business logic
+│   ├── auth.ts            # Handles register/login
+│   ├── note.ts            # CRUD for notes
+│   └── upload.ts          # Upload to Cloudinary
 │
-├── middleware/ # Custom middlewares
-│ ├── auth.ts # Verifies JWT tokens
-│ ├── authorize.ts # Role-based authorization
-│ ├── ratelimiter.ts # Rate limiting
-│ ├── upload.ts # Multer configuration
-│ └── validateZod.ts # Zod validation handler
+├── middleware/            # Custom middlewares
+│   ├── auth.ts            # Verifies JWT tokens
+│   ├── authorize.ts       # Role-based authorization
+│   ├── ratelimiter.ts     # Rate limiting
+│   ├── upload.ts          # Multer configuration
+│   └── validateZod.ts     # Zod validation handler
 │
-├── models/ # Mongoose models
-│ ├── user.ts
-│ └── note.ts
+├── models/                # Mongoose models
+│   ├── user.ts
+│   └── note.ts
 │
-├── routes/ # Route handlers
-│ ├── authRoutes.ts
-│ ├── note.ts
-│ └── upload.ts
+├── routes/                # Route handlers
+│   ├── authRoutes.ts
+│   ├── note.ts
+│   └── upload.ts
 │
-├── schemas/ # Validation schemas
-│ ├── userSchema.ts
-│ └── noteSchema.ts
+├── schemas/               # Validation schemas
+│   ├── userSchema.ts
+│   └── noteSchema.ts
 │
-├── utils/ # Helper utilities
-│ ├── cloudinary.ts
-│ ├── generateToken.ts
-│ └── swagger.ts
+├── utils/                 # Helper utilities
+│   ├── cloudinary.ts
+│   ├── generateToken.ts
+│   └── swagger.ts
 │
-└── server.ts # Application entry point
+└── server.ts              # Application entry point
 
 ---
 
@@ -105,3 +102,14 @@ npm start
 
 Server will start on:
 👉 http://localhost:5000
+
+
+🧠 API Flow Diagram
+flowchart TD
+    A[User Registers/Login] --> B[JWT Token Issued]
+    B --> C[Access Protected Routes]
+    C --> D[Create/Update/Delete Note]
+    C --> E[Upload Image to Cloudinary]
+    E --> F[Image URL Returned]
+    C --> G[Admin Views All Notes]
+    H[Swagger Docs] --> I[/api/docs]
