@@ -21,7 +21,7 @@ app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 //register routes
 app.use("/api",notecreate)
-app.use("/apiauth", authRoutes);
+app.use("/api/auth", authRoutes);
 app.use("/api",profile)
 
 app.get("/", (_req:Request, res:Response) => {
